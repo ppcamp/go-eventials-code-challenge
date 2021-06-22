@@ -1,13 +1,12 @@
-<p align="center">
-  <span style="
-    display: block;
-    width: 100px;
-    height: 82px;
-    filter: hue-rotate(180deg);
-    background-image: url(https://assets.website-files.com/60147207eb0b6f4ddaeeaf73/601b7c07082f025136d6936c_logo-eventials.svg);
-    background-size: 100px 82px;
-    filter: invert(100%);" />
-</p>
+<p style="
+  display: block;
+  width: 100px;
+  height: 82px;
+  margin: auto;
+  filter: hue-rotate(180deg);
+  background-image: url(https://assets.website-files.com/60147207eb0b6f4ddaeeaf73/601b7c07082f025136d6936c_logo-eventials.svg);
+  background-size: 100px 82px;
+  filter: invert(100%);" />
 
 
 # Desafio backend
@@ -31,12 +30,11 @@ Informações sobre estruturação do código e algumas anotações sobre ele po
 ## Outras referências
 
 
-<p align="center">
-  <span style="
+<p style="
+    margin: auto;
     display: block;
     width: 100px;
     height: 82px;
     background-image: url(https://golang.org/lib/godoc/images/footer-gopher.jpg);
     background-size: 100px 82px;
   background-blend-mode: multiply;"/>
-</p>
