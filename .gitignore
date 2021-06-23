@@ -1,1 +1,10 @@
-data/
+# Para facilitar, essas configurações estarão no repo
+
+# Configuration file
+# **database.yml
+
+# Configuration env file
+# **/.env
+
+# Build folder
+bin

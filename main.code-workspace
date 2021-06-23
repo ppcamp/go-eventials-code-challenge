@@ -1,0 +1,57 @@
+{
+	"folders": [
+		{
+			"path": "./api"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+
+	},
+	"extensions": {
+		"recommendations": [
+			"golang.go",
+			"ms-azuretools.vscode-docker",
+			"wayou.vscode-todo-highlight",
+			"visualstudioexptteam.vscodeintellicode",
+			"rangav.vscode-thunder-client"
+		]
+	},
+	"tasks": {
+		// See https://go.microsoft.com/fwlink/?LinkId=733558
+		// for the documentation about the tasks.json format
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"type": "shell",
+				"command": "",
+				"label": "Run : dev",
+				"args": [
+					"go", "build",
+					"-o","${workspaceFolder}/build/main",
+					"${workspaceFolder}/src/cmd/web/*.go",
+					"&&",
+					"${workspaceFolder}/build/main"],
+				"windows":{
+					"args": [
+						"go.exe", "build",
+						"-o","${workspaceFolder}/build/main.exe",
+						"${workspaceFolder}/src/cmd/web/*",
+						"&&",
+						"${workspaceFolder}/build/main.exe"]
+				},
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"presentation": {
+					"reveal": "always"
+				},
+				"problemMatcher": []
+			},
+
+		]
+	}
+}

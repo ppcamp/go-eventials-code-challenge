@@ -1,0 +1,1 @@
+add_column("companies", "website", "string", {"default": "", "size": 200})

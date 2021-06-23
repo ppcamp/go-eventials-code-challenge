@@ -1,5 +1,5 @@
 # Import da imagem
-FROM postgres:latest
+FROM postgres:12-alpine
 
 ARG POSTGRES_USER
 ARG POSTGRES_PASSWORD
