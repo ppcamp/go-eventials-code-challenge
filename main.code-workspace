@@ -8,7 +8,11 @@
 		}
 	],
 	"settings": {
-
+		"vsicons.presets.hideFolders": true,
+		"editor.foldingStrategy": "indentation",
+		"files.exclude": {
+			"bin": true,
+		}
 	},
 	"extensions": {
 		"recommendations": [
