@@ -1,3 +1,5 @@
+// Módulo de intuito apenas "organizacional" de configurações
+
 package driver
 
 import (
@@ -13,14 +15,17 @@ type DatabaseConfig struct {
 	DBname   string
 }
 
+// Função de atalho de formatação
 func (d *DatabaseConfig) GetDNS() string {
 	return fmt.Sprintf(
 		"host=%s port=%s dbname=%s user=%s password=%s",
 		d.Host, d.Port, d.DBname, d.User, d.Password)
 }
 
+// Função apenas para "embelezamento" do código
 func LoadDatabaseConfig() DatabaseConfig {
 	// default values
+
 	// gotenv.Apply(strings.NewReader("APP_ID=1234567"))
 
 	return DatabaseConfig{

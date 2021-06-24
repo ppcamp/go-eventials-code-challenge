@@ -7,7 +7,6 @@ import (
 	"os"
 
 	"github.com/subosito/gotenv"
-
 	"yawoen.com/app/internal/config"
 	"yawoen.com/app/internal/driver"
 )
@@ -41,9 +40,10 @@ func main() {
 	}
 }
 
-// Startup routine for this module
+// Roda na criação deste módulo, configurando o env
 func init() {
-	gotenv.Load()
+	// Configures the environment values
+	gotenv.Load("./.env")
 }
 
 // Realiza algumas configurações antes de iniciar o servidor
@@ -56,16 +56,15 @@ func setUp() (*driver.Database, error) {
 	app.InProduction = false
 	//#endregion
 
-	//#region: lendo arquivo env
-	dbconfig := driver.LoadDatabaseConfig()
-	//#endregion
-
 	//#region: configurando os loggers
 	app.InfoLog = log.New(os.Stdout, "[INFO]\t", log.Ldate|log.Ltime) // console
 	app.InfoLog = log.New(os.Stdout, "[INFO]\t", log.Ldate|log.Ltime) // console
 	//#endregion
 
 	//#region: conexão com o banco
+	dbconfig := driver.LoadDatabaseConfig()
+	log.Println(dbconfig.GetDNS())
+
 	log.Println("Connecting to database...")
 	db, err := driver.ConnectSQL(dbconfig.GetDNS())
 	if err != nil {

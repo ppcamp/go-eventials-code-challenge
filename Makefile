@@ -7,8 +7,7 @@ start:
 
 check:
 #TODO: include command to test the code and show the results
-	cd ./api && go test ./... -v
-	cd ./api && go test ./... -cover profile=coverage.out && go tool cover -html=coverage.out
+	cd ./api && go test ./...
 
 setup:
 #if needed to setup the enviroment before starting it
