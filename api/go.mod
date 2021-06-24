@@ -8,5 +8,6 @@ require (
 	github.com/jackc/pgx/v4 v4.11.0
 	github.com/lib/pq v1.10.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/subosito/gotenv v1.2.0
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )

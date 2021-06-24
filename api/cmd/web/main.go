@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/subosito/gotenv"
+
 	"yawoen.com/app/internal/config"
 	"yawoen.com/app/internal/driver"
 )
@@ -39,6 +41,11 @@ func main() {
 	}
 }
 
+// Startup routine for this module
+func init() {
+	gotenv.Load()
+}
+
 // Realiza algumas configurações antes de iniciar o servidor
 //
 // Como por exemplo:
@@ -49,6 +56,10 @@ func setUp() (*driver.Database, error) {
 	app.InProduction = false
 	//#endregion
 
+	//#region: lendo arquivo env
+	dbconfig := driver.LoadDatabaseConfig()
+	//#endregion
+
 	//#region: configurando os loggers
 	app.InfoLog = log.New(os.Stdout, "[INFO]\t", log.Ldate|log.Ltime) // console
 	app.InfoLog = log.New(os.Stdout, "[INFO]\t", log.Ldate|log.Ltime) // console
@@ -56,7 +67,7 @@ func setUp() (*driver.Database, error) {
 
 	//#region: conexão com o banco
 	log.Println("Connecting to database...")
-	db, err := driver.ConnectSQL("host=localhost port=5432 dbname=bookings user=tcs password=")
+	db, err := driver.ConnectSQL(dbconfig.GetDNS())
 	if err != nil {
 		log.Fatal("Cannot connect to database! Dying...")
 	}
