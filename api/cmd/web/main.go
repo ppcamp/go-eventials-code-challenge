@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"yawoen.com/app/pkg/configs"
+	"yawoen.com/app/internal/configs"
 )
 
 // Configurando o número da porta que irá rodar o servidor
@@ -25,6 +25,7 @@ func main() {
 
 	log.Println(fmt.Sprintf("Staring application on http://localhost%s", port_number))
 
+	// Iniciando servidor
 	err := srv.ListenAndServe()
 	if err != nil {
 		log.Fatal(err)
