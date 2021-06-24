@@ -23,6 +23,7 @@ Informações sobre estruturação do código e algumas anotações sobre ele po
   - [Como executar?](#como-executar)
   - [Migrations](#migrations)
     - [Dependências do Soda](#dependências-do-soda)
+  - [DEV](#dev)
 
 ## Considerações feitas durante o desenvolvimento
 
@@ -97,6 +98,16 @@ Para executar as *migrations* você precisa ter um client do postgresql no path 
 sudo apt install postgresql-client-common
 ```
 
+
+## DEV
+
+```bash
+# remove os módulos em cache
+go clean -modcache
+
+# path da pasta de apps
+go env GOMODCACHE
+```
 
 
 

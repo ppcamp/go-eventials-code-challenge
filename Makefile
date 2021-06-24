@@ -12,5 +12,11 @@ check:
 
 setup:
 #if needed to setup the enviroment before starting it
-	cd ./docker && docker-compose up
+# starting a detached docker database
+	cd ./docker && docker-compose up -d
+# installing the soda cli
+	cd ./api && go get github.com/gobuffalo/pop/...
+# running soda migrations
 	cd ./api && soda migrate
+# installing all package deps
+	cd ./api && go mod tidy
