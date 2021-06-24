@@ -7,11 +7,10 @@ start:
 
 check:
 #TODO: include command to test the code and show the results
-	cd ./api && go test ./cmd/web/*go -v
-	cd ./api && go test ./cmd/web/*go -cover profile=coverage.out && go tool cover -html=coverage.out
+	cd ./api && go test ./... -v
+	cd ./api && go test ./... -cover profile=coverage.out && go tool cover -html=coverage.out
 
 setup:
 #if needed to setup the enviroment before starting it
-	cd ./api
-	soda migrate
-	cd ..
+	cd ./docker && docker-compose up
+	cd ./api && soda migrate

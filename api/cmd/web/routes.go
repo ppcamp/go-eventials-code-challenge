@@ -5,11 +5,11 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	"yawoen.com/app/internal/configs"
+	"yawoen.com/app/internal/config"
 )
 
 // Configura todos os endpoints da aplicação
-func setUpRoutes(a *configs.AppConfig) http.Handler {
+func setUpRoutes(a *config.AppConfig) http.Handler {
 	mux := chi.NewRouter()
 
 	//#region middlewares

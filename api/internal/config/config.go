@@ -1,4 +1,4 @@
-package configs
+package config
 
 import (
 	"log"
@@ -6,6 +6,7 @@ import (
 
 type AppConfig struct {
 	InfoLog      *log.Logger
+	ErrorLog     *log.Logger
 	InProduction bool
 	// TokenAuth    *jwtauth.JWTAuth
 }
