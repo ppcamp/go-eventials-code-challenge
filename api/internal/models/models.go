@@ -5,5 +5,6 @@ package models
 type Company struct {
 	Id         int
 	Name       string
-	AddressZip string
+	AddressZip NullString
+	Website    NullString
 }

@@ -8,7 +8,9 @@ import (
 
 	"github.com/subosito/gotenv"
 	"yawoen.com/app/internal/config"
+	"yawoen.com/app/internal/controllers"
 	"yawoen.com/app/internal/driver"
+	"yawoen.com/app/internal/helpers"
 )
 
 // Configurando o número da porta que irá rodar o servidor
@@ -57,8 +59,8 @@ func setUp() (*driver.Database, error) {
 	//#endregion
 
 	//#region: configurando os loggers
-	app.InfoLog = log.New(os.Stdout, "[INFO]\t", log.Ldate|log.Ltime) // console
-	app.InfoLog = log.New(os.Stdout, "[INFO]\t", log.Ldate|log.Ltime) // console
+	app.InfoLog = log.New(os.Stdout, "[INFO]\t", log.Ldate|log.Ltime)   // console
+	app.ErrorLog = log.New(os.Stdout, "[Error]\t", log.Ldate|log.Ltime) // console
 	//#endregion
 
 	//#region: conexão com o banco
@@ -73,5 +75,11 @@ func setUp() (*driver.Database, error) {
 	log.Println("Connected to database!")
 	//#endregion
 
+	//#region: outras configurações
+	repo := controllers.NewRepository(&app, db) // cria o repositório da aplicação
+	helpers.NewHelpers(&app)                    // registra os helpers na aplicação
+	controllers.SetRepository(repo)             // configura para os controllers
+
+	//#endregion
 	return db, nil
 }

@@ -14,9 +14,7 @@ type postgresDBRepo struct {
 
 //#region: Criando o padrão para repositórios postgres
 // Cria uma nova conexão com o postgres
-func NewPostgresRepo(
-	conn *sql.DB,
-	a *config.AppConfig) repository.DatabaseRepository {
+func NewPostgresRepo(conn *sql.DB, a *config.AppConfig) repository.DatabaseRepository {
 
 	return &postgresDBRepo{
 		App: a,
