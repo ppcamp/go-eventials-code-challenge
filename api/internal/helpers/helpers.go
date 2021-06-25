@@ -3,7 +3,6 @@ package helpers
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"runtime/debug"
 
@@ -42,9 +41,6 @@ func baseError(w http.ResponseWriter, status int, message string) {
 	w.WriteHeader(status)
 	w.Write(jsonError)
 
-	var test Error
-	json.Unmarshal([]byte(jsonError), &test)
-	log.Println(test)
 }
 
 // Envia uma mensagem de erro formatada para json
