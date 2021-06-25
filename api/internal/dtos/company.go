@@ -11,9 +11,9 @@ import (
 //#region: CreateDTO
 
 type CompanyCreate struct {
-	Name       string
-	AddressZip string
-	Website    string
+	Name       string `json:"name"`
+	AddressZip string `json:"zip"`
+	Website    string `json:"website"`
 
 	// Variable used to get all encountered errors
 	Errors errors
@@ -63,9 +63,9 @@ func (f *CompanyCreate) Valid() bool {
 
 //#region: QueryDTO
 type CompanyQuery struct {
-	Name       string
-	AddressZip string
-	Website    string
+	Name       string `json:"name"`
+	AddressZip string `json:"zip"`
+	Website    string `json:"website"`
 
 	// Variable used to get all encountered errors
 	Errors errors
