@@ -22,8 +22,8 @@ func NewHelpers(a *config.AppConfig) {
 
 //#region: errors helpers
 type Error struct {
-	StatusCode int    `json:"statusCode"`
-	Message    string `json:"message"`
+	StatusCode int
+	Message    string
 }
 
 // Configura um template para o envio dos errors json

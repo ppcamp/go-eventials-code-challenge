@@ -65,7 +65,6 @@ func setUp() (*driver.Database, error) {
 
 	//#region: conexão com o banco
 	dbconfig := driver.LoadDatabaseConfig()
-	log.Println(dbconfig.GetDNS())
 
 	log.Println("Connecting to database...")
 	db, err := driver.ConnectSQL(dbconfig.GetDNS())
