@@ -13,23 +13,23 @@ import (
 
 //#endregion
 
-// Database é usado na fila de conexão com o banco
+// Database is used to create a connection pool with sql database
 type Database struct {
-	SQL *sql.DB // Usando desta forma, posso alterar o banco futuramente
+	SQL *sql.DB // With this approach, i can change it later
 }
 
-//#region: Conexão com o banco
+//#region: database connection
 var dbconn = &Database{}
 
 //#endregion
 
-//#region: Constantes
-const maxOpenDbConn = 10              // conexões abertas
-const maxIleDbConn = 5                // conexões inativas
-const maxDbLifetime = 5 * time.Minute // lifetime da conexão
+//#region: constants
+const maxOpenDbConn = 10              // openned connections
+const maxIleDbConn = 5                // iled connections
+const maxDbLifetime = 5 * time.Minute // connections lifetime
 //#endregion
 
-// Cria uma pool de conexões com o banco
+// creates a db connection pool
 func ConnectSQL(dsn string) (*Database, error) {
 	d, err := newDatabase(dsn)
 	if err != nil {
@@ -42,7 +42,7 @@ func ConnectSQL(dsn string) (*Database, error) {
 
 	dbconn.SQL = d
 
-	// testando novamente a conexão após as modificações
+	// testing after modifications
 	err = testDB(d)
 	if err != nil {
 		return nil, err
@@ -50,28 +50,21 @@ func ConnectSQL(dsn string) (*Database, error) {
 	return dbconn, nil
 }
 
-// Cria uma nova conexão com o banco e testa se funcionou
-//
-// @panic Se não conseguiu conectar com o banco
+// Creates a new connection with database and check if its working
 func newDatabase(dsn string) (*sql.DB, error) {
-	//#region: Cria a conexão com o banco
 	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		return nil, err
 	}
-	//#endregion
 
-	//#region: testa a conexão
 	if err = db.Ping(); err != nil {
 		return nil, err
 	}
 
-	//#endregion
-
 	return db, nil
 }
 
-// Dá um ping no banco para ver se ele está online
+// Check if database is online
 func testDB(d *sql.DB) error {
 	if err := d.Ping(); err != nil {
 		return err

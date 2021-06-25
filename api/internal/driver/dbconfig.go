@@ -15,14 +15,18 @@ type DatabaseConfig struct {
 	DBname   string
 }
 
-// Função de atalho de formatação
+// Function used only to parse this DatabaseConfig into a string
+//
+// Returns a dns string for this configuration
 func (d *DatabaseConfig) GetDNS() string {
 	return fmt.Sprintf(
 		"host=%s port=%s dbname=%s user=%s password=%s",
 		d.Host, d.Port, d.DBname, d.User, d.Password)
 }
 
-// Função apenas para "embelezamento" do código
+// Function used only to parse data from environment
+//
+// Used just as shortcut in main setup function
 func LoadDatabaseConfig() DatabaseConfig {
 	// default values
 
