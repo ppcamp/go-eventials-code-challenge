@@ -28,23 +28,47 @@ Informações sobre estruturação do código e algumas anotações sobre ele po
 ## Considerações feitas durante o desenvolvimento
 
 1. Criar uma tabela "companies" (id,name:varchar(200),zip:varchar(5))
-2. Como são 5 **dígitos** no máximo, o integer se torna uma opção melhor que o char
-3. Para o enunciado abaixo:
+
+2. Para o enunciado abaixo:
     > The loaded data should have the following treatment:
     Existem várias possíveis abordagens, dentre elas:
     1. Abrir cada arquivo, tratar os dados e criar novos arquivos, CSV|sql
     2. Abrir cada arquivo, tratar os dados e já inserir no banco
     3. Importar diretamente no banco, e tratar os dados por lá (solução trivial)
 
-    Uma vez que não é especificado a abordagem, irei optar pela (3)
+    > Uma vez que não é especificado a abordagem, **irei optar pela (3)**.
+    > Parte da (1ª abordagem já foi feita) e pode ser encontrada dentro do arquivo `tools/fileStream.7z`
+    > Este arquivo tem uma função para abrir pedaços de arquivos absurdamente grandes e então tratá-los.
+
+3. Pressupõe-se que tem um fluxo a ser respeitado, assim, terei que editar a tabela após esta ser criada
+   e populada.
 
 4. Tem alguns erros nos dados:
     - tim dieball aparece 2x
     - epicboardshop branch não tem addressZip
 
+    > Dessa forma, é necessário fazer o matching usando os dois campos para poder inserir o terceiro
+
+5. Como foi pedido para fazer os updates via *HTTP*, optei por criar a API primeiro, com boa parte
+   das funções rest e então, usar um script para popular com as chamadas na **API**
+
+6. Como **não** foi pedido documentação de endpoints e, dado que ficou apertado o prazo, optei por
+   deixar isso como uma "melhoria futura" da implementação.
+
 ## Como executar?
 
-Você deve garantir que o banco está atualizado, faça isso rodando as [migrations](#migrations)
+```bash
+# - Cria o banco docker
+# - Baixa os pacotes necessários para a aplicação
+# - Roda a migration que altera a tabela inicial
+make setup
+
+# Roda a suíte de testes
+make check
+
+# Inicia a API
+make start
+```
 
 ## Migrations
 
