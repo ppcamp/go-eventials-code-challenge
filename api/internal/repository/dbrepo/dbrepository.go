@@ -12,8 +12,9 @@ type postgresDBRepo struct {
 	DB  *sql.DB
 }
 
-//#region: Criando o padrão para repositórios postgres
-// Cria uma nova conexão com o postgres
+// Creating a Repository that will be used to hold all postgres connections
+//
+// Returns a postgres repository
 func NewPostgresRepo(conn *sql.DB, a *config.AppConfig) repository.DatabaseRepository {
 
 	return &postgresDBRepo{
@@ -21,5 +22,3 @@ func NewPostgresRepo(conn *sql.DB, a *config.AppConfig) repository.DatabaseRepos
 		DB:  conn,
 	}
 }
-
-//#endregion
