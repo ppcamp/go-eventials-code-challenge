@@ -71,6 +71,27 @@ func (m *Repository) CompanyGetMany(w http.ResponseWriter, r *http.Request) {
 		Website:    r.URL.Query().Get("website"),
 	}
 
+	company.ErrorsInit()
+	if !company.Valid() {
+		var error = struct {
+			StatusCode int
+			Message    dtos.Errors
+		}{http.StatusBadRequest, dtos.Errors(company.Errors)}
+
+		// convert to json
+		out, err := json.MarshalIndent(error, "", " ")
+		if err != nil {
+			helpers.ServerError(w, err)
+			return
+		}
+
+		// Return the errors messages
+		w.WriteHeader(http.StatusBadRequest)
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(out)
+		return
+	}
+
 	companies, err := m.DB.CompanyFindByQuery(&company)
 	if err != nil {
 		helpers.ServerError(w, err)

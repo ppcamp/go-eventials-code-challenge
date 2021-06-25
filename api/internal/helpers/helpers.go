@@ -58,24 +58,3 @@ func ServerError(w http.ResponseWriter, err error) {
 }
 
 //#endregion
-
-// type jsonResponse struct {
-// 	OK      bool   `json:"ok"`
-// 	Message string `json:"message"`
-// }
-
-// func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
-// 	resp := jsonResponse{
-// 		OK:      true,
-// 		Message: "Available!",
-// 	}
-
-// 	out, err := json.MarshalIndent(resp, "", "     ")
-// 	if err != nil {
-// 		helpers.ServerError(w, err)
-// 		return
-// 	}
-
-// 	w.Header().Set("Content-Type", "application/json")
-// 	w.Write(out)
-// }
