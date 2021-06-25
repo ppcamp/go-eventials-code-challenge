@@ -15,10 +15,10 @@ LABEL description="Inicia uma instância do banco com os dados"
 WORKDIR /docker-entrypoint-initdb.d/
 
 # Copiando os dados para a imagem
-COPY dataIntegrationChallenge.tgz .
+COPY q1_catalog.csv .
 
 # Extraindo os dados
-RUN tar -xf ./dataIntegrationChallenge.tgz
+# RUN tar -xf ./dataIntegrationChallenge.tgz
 
 # Copiando a query sql que será executada
 COPY default.sql .

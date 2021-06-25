@@ -12,10 +12,9 @@ type testDBRepo struct {
 	DB  *sql.DB
 }
 
-// Creates a test repository
-func NewTestRepo(conn *sql.DB, a *config.AppConfig) repository.DatabaseRepository {
+// creates a new testing repository
+func NewTestingsRepo(a *config.AppConfig) repository.DatabaseRepository {
 	return &testDBRepo{
 		App: a,
-		DB:  conn,
 	}
 }

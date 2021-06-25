@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"log"
 	"net/http"
 
 	"yawoen.com/app/internal/config"
@@ -39,8 +38,8 @@ func SetRepository(r *Repository) {
 //#region: common endpoints
 // default
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	remoteIP := r.RemoteAddr
-	log.Println("Home: Request incoming from: ", remoteIP)
+	// remoteIP := r.RemoteAddr
+	// log.Println("Home: Request incoming from: ", remoteIP)
 }
 
 //#endregion
