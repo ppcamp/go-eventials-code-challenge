@@ -5,12 +5,17 @@ import (
 	"yawoen.com/app/internal/models"
 )
 
-// Essa interface vai conter todas as rotas usadas para conectar no banco
+// it contains all routes used to connect with database
 type DatabaseRepository interface {
-	CompanyCreate(*dtos.CompanyCreate) error                     // create element
-	CompanyFindById(int) (models.Company, error)                 // search for this id
-	CompanyFindByQuery(...interface{}) ([]models.Company, error) // update all fields
-	CompanyEditAll(*dtos.CompanyCreate) error                    // fetch data
-	CompanyEditByQuery(...interface{}) error                     // update specific fields
-	CompanyDelete(int) error                                     // delete element by id
+
+	//#region: Company services
+	CompanyCreate(*dtos.CompanyCreate) error                         // create element
+	CompanyFindById(int) (models.Company, error)                     // search for this id
+	CompanyFindByQuery(*dtos.CompanyQuery) ([]models.Company, error) // update all fields
+	CompanyEditAll(int, *dtos.CompanyCreate) error                   // fetch data
+	CompanyDelete(int) error                                         // delete element by id
+	CompanyEditByQuery(int, ...interface{}) error                    // TODO: create a route to update specific fields
+	CompanyEditWebsite(*dtos.CompanyCreate) (int, error)             //
+	//#endregion
+
 }
