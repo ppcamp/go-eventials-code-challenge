@@ -68,6 +68,10 @@ make check
 
 # Inicia a API
 make start
+
+# Executa o script que abre o arquivo q2 e envia os dados para uma rota específica da api
+# este script precisa que um outro terminal esteja rodando o "make start", i.e, a api precisa estar online
+make run
 ```
 
 ## Migrations
