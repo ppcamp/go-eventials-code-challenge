@@ -13,7 +13,7 @@ run:
 # run another instance of make file with this flag to makes the database update
 	cd ./scripts && go build -o ./bin/tool ./populateDB.go
 # running the script with update
-	cd ./script && ./bin/tool -request ../docker/q2_clientData.csv PUT http://localhost:3000/company/website "name;zip;website"
+	cd ./scripts && ./bin/tool -request ../docker/q2_clientData.csv PUT http://localhost:3000/company/website "name;zip;website"
 
 setup:
 #if needed to setup the enviroment before starting it

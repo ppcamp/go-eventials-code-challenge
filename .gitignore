@@ -8,3 +8,6 @@
 
 # Build folder
 bin
+
+# ignore extracted data
+docker/q*
